@@ -30,7 +30,23 @@ associated to dProtect:</p><div class=highlight><pre tabindex=0 style=color:#f8f
 </span></span><span style=display:flex;background-color:#3d3f4a><span>        classpath <span style=color:#f1fa8c>&#39;re.obfuscator:dprotect-gradle:1.0.0&#39;</span>
 </span></span><span style=display:flex><span>    <span style=color:#ff79c6>}</span>
 </span></span><span style=display:flex><span><span style=color:#ff79c6>}</span>
-</span></span></code></pre></div><p>Then, in the <code>build.gradle</code> of the application, we can instantiate the Gradle plugin and define the <code>dProtect</code>
+</span></span></code></pre></div><p>Even if the packages are public, <strong>you need to generate a github token</strong> to access GitHub Maven Packages:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><code class=language-gradle data-lang=gradle><span style=display:flex><span>buildscript <span style=color:#ff79c6>{</span>
+</span></span><span style=display:flex><span>    repositories <span style=color:#ff79c6>{</span>
+</span></span><span style=display:flex><span>        mavenCentral<span style=color:#ff79c6>()</span>
+</span></span><span style=display:flex><span>        maven <span style=color:#ff79c6>{</span>
+</span></span><span style=display:flex><span>          url <span style=color:#ff79c6>=</span> uri<span style=color:#ff79c6>(</span><span style=color:#f1fa8c>&#34;https://maven.pkg.github.com/open-obfuscator/dProtect&#34;</span><span style=color:#ff79c6>)</span>
+</span></span><span style=display:flex;background-color:#3d3f4a><span>          credentials <span style=color:#ff79c6>{</span>
+</span></span><span style=display:flex;background-color:#3d3f4a><span>              username <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>&#34;your-username&#34;</span>
+</span></span><span style=display:flex;background-color:#3d3f4a><span>              password <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>&#34;the-token&#34;</span>
+</span></span><span style=display:flex;background-color:#3d3f4a><span>          <span style=color:#ff79c6>}</span>
+</span></span><span style=display:flex><span>        <span style=color:#ff79c6>}</span>
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>}</span>
+</span></span><span style=display:flex><span>    dependencies <span style=color:#ff79c6>{</span>
+</span></span><span style=display:flex><span>        classpath <span style=color:#f1fa8c>&#39;re.obfuscator:dprotect-gradle:1.0.0&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>}</span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>}</span>
+</span></span></code></pre></div><p>The generated token must have the <code>repo</code> scope enabled. You can also look at the GitHub documentation
+for the details: <a href=https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry#using-a-published-package>Using a published package</a>.</p><p>Then, in the <code>build.gradle</code> of the application, we can instantiate the Gradle plugin and define the <code>dProtect</code>
 configuration block:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><code class=language-gradle data-lang=gradle><span style=display:flex><span>apply <span style=color:#8be9fd;font-style:italic>plugin:</span> <span style=color:#f1fa8c>&#39;com.android.application&#39;</span>
 </span></span><span style=display:flex;background-color:#3d3f4a><span>apply <span style=color:#8be9fd;font-style:italic>plugin:</span> <span style=color:#f1fa8c>&#39;re.obfuscator.dprotect&#39;</span>
 </span></span><span style=display:flex><span>
