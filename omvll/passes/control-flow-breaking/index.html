@@ -86,7 +86,7 @@ a jump right after the injected prologue.</p><p>Using the LLVM IR, we can get a 
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex;background-color:#3d3f4a><span>Value<span style=color:#ff79c6>*</span> FPtr <span style=color:#ff79c6>=</span> IRB.CreatePointerCast(FAddr, FCopied<span style=color:#ff79c6>-&gt;</span>getFunctionType());
 </span></span><span style=display:flex;background-color:#3d3f4a><span>IRB.CreateRet(IRB.CreateCall(FCopied<span style=color:#ff79c6>-&gt;</span>getFunctionType(), FPtr, args));
-</span></span></code></pre></div><p>Without any additional protections, the indirect call <code>&FCopied + PrologueSize</code> would be resolved by the
+</span></span></code></pre></div><p>Without any additional protections, the indirect call <code>&amp;FCopied + PrologueSize</code> would be resolved by the
 disassemblers which can strongly weaken the protection.</p><p>To prevent this resolution, we are applying MBA and opaque constants thanks to the
 <a href=https://obfuscator.re/omvll/other-topics/annotations/>annotations</a> mechanism:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid><code class=language-cpp data-lang=cpp><span style=display:flex><span>Value<span style=color:#ff79c6>*</span> DstAddr <span style=color:#ff79c6>=</span> IRB.CreateAdd(OpaqueFAddr,
 </span></span><span style=display:flex><span>                               ConstantInt<span style=color:#ff79c6>::</span>get(IRB.getInt64Ty(), PrologueSize));
