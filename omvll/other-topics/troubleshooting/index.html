@@ -1,4 +1,574 @@
-<!doctype html><html class=dark-mode lang=en-us prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=HandheldFriendly content="True"><meta name=MobileOptimized content="320"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><link rel=manifest href=manifest.webmanifest><link rel=icon type=image/svg+xml href=/favicon/favicon.svg><link rel=icon type=image/png href=/favicon/favicon_hu17561484188248076563.png><link rel="shortcut icon" type=image/png href=/favicon/favicon_hu17893542909638419879.png><link rel=apple-touch-icon type=image/png href=/favicon/favicon_hu17893542909638419879.png><meta name=description content="Troubleshooting Be aware that the support for iOS is currently very limited. In particular for Objective-C/Swift code. NDK Specific Can&rsquo;t load libc++abi.so.1/libc++.so.1: error: unable to load plugin '<path>/libOMVLL.so': 'Could not load library '<path>/libOMVLL.so': libc++abi.so.1: cannot open shared object file: No such file or directory' Set export LD_LIBRARY_PATH to the NDK directory which contains these libraries: <ndk>/toolchains/llvm/prebuilt/linux-x86_64/lib64 Python ModuleNotFoundError: No module named &rsquo;encodings' Fatal Python error: init_fs_encoding: failed to get the Python codec of the filesystem encoding Python runtime state: core initialized ModuleNotFoundError: No module named 'encodings' Current thread 0x00007fd10ad91040 (most recent call first): <no Python frame> ninja: build stopped: subcommand failed."><meta property="og:type" content="website"><meta property="og:description" content="Troubleshooting Be aware that the support for iOS is currently very limited. In particular for Objective-C/Swift code. NDK Specific Can&rsquo;t load libc++abi.so.1/libc++.so.1: error: unable to load plugin '<path>/libOMVLL.so': 'Could not load library '<path>/libOMVLL.so': libc++abi.so.1: cannot open shared object file: No such file or directory' Set export LD_LIBRARY_PATH to the NDK directory which contains these libraries: <ndk>/toolchains/llvm/prebuilt/linux-x86_64/lib64 Python ModuleNotFoundError: No module named &rsquo;encodings' Fatal Python error: init_fs_encoding: failed to get the Python codec of the filesystem encoding Python runtime state: core initialized ModuleNotFoundError: No module named 'encodings' Current thread 0x00007fd10ad91040 (most recent call first): <no Python frame> ninja: build stopped: subcommand failed."><meta property="og:title" content="Troubleshooting | Open Obfuscator"><meta property="og:site_name" content="Open Obfuscator: A free and open-source solution for obfuscating mobile applications."><meta property="og:url" content="https://obfuscator.re/omvll/other-topics/troubleshooting/"><meta property="og:locale" content="en-us"><meta property="article:modified_time" content="2022-10-03T20:19:19+01:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@open_obfuscator"><meta name=twitter:creator content="@rh0main"><meta name=twitter:title content="Troubleshooting | Open Obfuscator"><meta name=twitter:description content="Troubleshooting Be aware that the support for iOS is currently very limited. In particular for Objective-C/Swift code. NDK Specific Can&rsquo;t load libc++abi.so.1/libc++.so.1: error: unable to load plugin '<path>/libOMVLL.so': 'Could not load library '<path>/libOMVLL.so': libc++abi.so.1: cannot open shared object file: No such file or directory' Set export LD_LIBRARY_PATH to the NDK directory which contains these libraries: <ndk>/toolchains/llvm/prebuilt/linux-x86_64/lib64 Python ModuleNotFoundError: No module named &rsquo;encodings' Fatal Python error: init_fs_encoding: failed to get the Python codec of the filesystem encoding Python runtime state: core initialized ModuleNotFoundError: No module named 'encodings' Current thread 0x00007fd10ad91040 (most recent call first): <no Python frame> ninja: build stopped: subcommand failed."><meta name=twitter:domain content="https://obfuscator.re/omvll/other-topics/troubleshooting/"><title>Troubleshooting | O-MVLL Documentation</title>
+<!doctype html><html class=dark-mode lang=en-us prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=HandheldFriendly content="True"><meta name=MobileOptimized content="320"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><link rel=manifest href=manifest.webmanifest><link rel=icon type=image/svg+xml href=/favicon/favicon.svg><link rel=icon type=image/png href=/favicon/favicon_hu17561484188248076563.png><link rel="shortcut icon" type=image/png href=/favicon/favicon_hu17893542909638419879.png><link rel=apple-touch-icon type=image/png href=/favicon/favicon_hu17893542909638419879.png><meta name=description content="Troubleshooting
+
+
+
+
+
+  
+  
+  
+  
+  Be aware that the support for iOS is currently very limited. In particular for Objective-C/Swift code.
+  
+
+
+NDK Specific
+
+
+
+
+
+
+
+  
+    
+      
+        
+        
+          Can&rsquo;t load libc++abi.so.1/libc++.so.1:
+error: unable to load plugin '<path>/libOMVLL.so':
+'Could not load library '<path>/libOMVLL.so': libc++abi.so.1: cannot open shared object file:
+No such file or directory'
+
+        
+      
+    
+    
+      
+        
+          
+            
+          
+        
+        
+          
+            Set export LD_LIBRARY_PATH to the NDK directory which
+contains these libraries:
+<ndk>/toolchains/llvm/prebuilt/linux-x86_64/lib64
+          
+        
+      
+    
+  
+
+
+
+
+Python
+
+
+
+
+
+
+
+  
+    
+      
+        
+        
+          ModuleNotFoundError: No module named &rsquo;encodings'
+Fatal Python error: init_fs_encoding: failed to get the Python codec of the filesystem encoding
+  Python runtime state: core initialized
+  ModuleNotFoundError: No module named 'encodings'
+
+  Current thread 0x00007fd10ad91040 (most recent call first):
+    <no Python frame>
+  ninja: build stopped: subcommand failed.
+
+        
+      
+    
+    
+      
+        
+          
+            
+          
+        
+        
+          
+            Set the environment variable OMVLL_PYTHONPATH to the Python STL
+as mentioned in Getting Started.
+You can also set the yaml key: OMVLL_PYTHONPATH.
+          
+        
+      
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+      
+        
+        
+          ModuleNotFoundError: No module named &lsquo;omvll_config&rsquo;:
+error: ModuleNotFoundError: No module named 'omvll_config'
+  ninja: build stopped: subcommand failed.
+
+        
+      
+    
+    
+      
+        
+          
+            
+          
+        
+        
+          
+            You should set the environment variable OMVLL_CONFIG with
+the path to the O-MVLL Python configuration file.
+Alternatively, you can set this value in the yaml file.
+          
+        
+      
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+      
+        
+        
+          The C++ compiler is not able to compile a simple test program:
+CMake Error at /opt/android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeTestCXXCompiler.cmake:62 (message):
+The C++ compiler
+
+  &#34;/home/romain/android/sdk/ndk/25.0.8775105/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++&#34;
+
+is not able to compile a simple test program.
+
+It fails with the following output:
+
+        
+      
+    
+    
+      
+        
+          
+            
+          
+        
+        
+          
+            This error is likely due to an error in the O-MVLL configuration file.
+You could try to set -DCMAKE_CXX_COMPILER_WORKS=1 and see if the
+error message is more meaningful.
+          
+        
+      
+    
+  
+
+
+
+
+How to open a GitHub issue
+O-MVLL might crash while trying to obfuscate code that is not well supported by the passes, 
+or it could also introduce an inconsistency in the obfuscated code."><meta property="og:type" content="website"><meta property="og:description" content="Troubleshooting
+
+
+
+
+
+  
+  
+  
+  
+  Be aware that the support for iOS is currently very limited. In particular for Objective-C/Swift code.
+  
+
+
+NDK Specific
+
+
+
+
+
+
+
+  
+    
+      
+        
+        
+          Can&rsquo;t load libc++abi.so.1/libc++.so.1:
+error: unable to load plugin '<path>/libOMVLL.so':
+'Could not load library '<path>/libOMVLL.so': libc++abi.so.1: cannot open shared object file:
+No such file or directory'
+
+        
+      
+    
+    
+      
+        
+          
+            
+          
+        
+        
+          
+            Set export LD_LIBRARY_PATH to the NDK directory which
+contains these libraries:
+<ndk>/toolchains/llvm/prebuilt/linux-x86_64/lib64
+          
+        
+      
+    
+  
+
+
+
+
+Python
+
+
+
+
+
+
+
+  
+    
+      
+        
+        
+          ModuleNotFoundError: No module named &rsquo;encodings'
+Fatal Python error: init_fs_encoding: failed to get the Python codec of the filesystem encoding
+  Python runtime state: core initialized
+  ModuleNotFoundError: No module named 'encodings'
+
+  Current thread 0x00007fd10ad91040 (most recent call first):
+    <no Python frame>
+  ninja: build stopped: subcommand failed.
+
+        
+      
+    
+    
+      
+        
+          
+            
+          
+        
+        
+          
+            Set the environment variable OMVLL_PYTHONPATH to the Python STL
+as mentioned in Getting Started.
+You can also set the yaml key: OMVLL_PYTHONPATH.
+          
+        
+      
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+      
+        
+        
+          ModuleNotFoundError: No module named &lsquo;omvll_config&rsquo;:
+error: ModuleNotFoundError: No module named 'omvll_config'
+  ninja: build stopped: subcommand failed.
+
+        
+      
+    
+    
+      
+        
+          
+            
+          
+        
+        
+          
+            You should set the environment variable OMVLL_CONFIG with
+the path to the O-MVLL Python configuration file.
+Alternatively, you can set this value in the yaml file.
+          
+        
+      
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+      
+        
+        
+          The C++ compiler is not able to compile a simple test program:
+CMake Error at /opt/android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeTestCXXCompiler.cmake:62 (message):
+The C++ compiler
+
+  &#34;/home/romain/android/sdk/ndk/25.0.8775105/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++&#34;
+
+is not able to compile a simple test program.
+
+It fails with the following output:
+
+        
+      
+    
+    
+      
+        
+          
+            
+          
+        
+        
+          
+            This error is likely due to an error in the O-MVLL configuration file.
+You could try to set -DCMAKE_CXX_COMPILER_WORKS=1 and see if the
+error message is more meaningful.
+          
+        
+      
+    
+  
+
+
+
+
+How to open a GitHub issue
+O-MVLL might crash while trying to obfuscate code that is not well supported by the passes, 
+or it could also introduce an inconsistency in the obfuscated code."><meta property="og:title" content="Troubleshooting | Open Obfuscator"><meta property="og:site_name" content="Open Obfuscator: A free and open-source solution for obfuscating mobile applications."><meta property="og:url" content="https://obfuscator.re/omvll/other-topics/troubleshooting/"><meta property="og:locale" content="en-us"><meta property="article:modified_time" content="2022-10-03T20:19:19+01:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@open_obfuscator"><meta name=twitter:creator content="@rh0main"><meta name=twitter:title content="Troubleshooting | Open Obfuscator"><meta name=twitter:description content="Troubleshooting
+
+
+
+
+
+  
+  
+  
+  
+  Be aware that the support for iOS is currently very limited. In particular for Objective-C/Swift code.
+  
+
+
+NDK Specific
+
+
+
+
+
+
+
+  
+    
+      
+        
+        
+          Can&rsquo;t load libc++abi.so.1/libc++.so.1:
+error: unable to load plugin '<path>/libOMVLL.so':
+'Could not load library '<path>/libOMVLL.so': libc++abi.so.1: cannot open shared object file:
+No such file or directory'
+
+        
+      
+    
+    
+      
+        
+          
+            
+          
+        
+        
+          
+            Set export LD_LIBRARY_PATH to the NDK directory which
+contains these libraries:
+<ndk>/toolchains/llvm/prebuilt/linux-x86_64/lib64
+          
+        
+      
+    
+  
+
+
+
+
+Python
+
+
+
+
+
+
+
+  
+    
+      
+        
+        
+          ModuleNotFoundError: No module named &rsquo;encodings'
+Fatal Python error: init_fs_encoding: failed to get the Python codec of the filesystem encoding
+  Python runtime state: core initialized
+  ModuleNotFoundError: No module named 'encodings'
+
+  Current thread 0x00007fd10ad91040 (most recent call first):
+    <no Python frame>
+  ninja: build stopped: subcommand failed.
+
+        
+      
+    
+    
+      
+        
+          
+            
+          
+        
+        
+          
+            Set the environment variable OMVLL_PYTHONPATH to the Python STL
+as mentioned in Getting Started.
+You can also set the yaml key: OMVLL_PYTHONPATH.
+          
+        
+      
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+      
+        
+        
+          ModuleNotFoundError: No module named &lsquo;omvll_config&rsquo;:
+error: ModuleNotFoundError: No module named 'omvll_config'
+  ninja: build stopped: subcommand failed.
+
+        
+      
+    
+    
+      
+        
+          
+            
+          
+        
+        
+          
+            You should set the environment variable OMVLL_CONFIG with
+the path to the O-MVLL Python configuration file.
+Alternatively, you can set this value in the yaml file.
+          
+        
+      
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+      
+        
+        
+          The C++ compiler is not able to compile a simple test program:
+CMake Error at /opt/android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeTestCXXCompiler.cmake:62 (message):
+The C++ compiler
+
+  &#34;/home/romain/android/sdk/ndk/25.0.8775105/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++&#34;
+
+is not able to compile a simple test program.
+
+It fails with the following output:
+
+        
+      
+    
+    
+      
+        
+          
+            
+          
+        
+        
+          
+            This error is likely due to an error in the O-MVLL configuration file.
+You could try to set -DCMAKE_CXX_COMPILER_WORKS=1 and see if the
+error message is more meaningful.
+          
+        
+      
+    
+  
+
+
+
+
+How to open a GitHub issue
+O-MVLL might crash while trying to obfuscate code that is not well supported by the passes, 
+or it could also introduce an inconsistency in the obfuscated code."><meta name=twitter:domain content="https://obfuscator.re/omvll/other-topics/troubleshooting/"><title>Troubleshooting | O-MVLL Documentation</title>
 <link rel=canonical href=https://obfuscator.re/omvll/other-topics/troubleshooting/><link rel=stylesheet href=/css/fa-all.min.css><link rel=stylesheet href=/vendor/swiper/swiper-bundle.min.css><link rel=stylesheet href=/vendor/lightgallery/css/lightgallery-bundle.min.css><link rel=stylesheet href=/css/theme.min.css></head><body><main class=page-wrapper><header class="header navbar navbar-expand bg-light border-bottom border-light shadow fixed-top" data-scroll-header><div class="container-fluid pe-lg-4"><div class="d-flex align-items-center px-4"><a href=https://obfuscator.re/omvll/other-topics/ class="navbar-brand flex-shrink-0 py-1 py-lg-2">O-MVLL</a></div><div class="d-flex align-items-center w-100"><ul class="navbar-nav d-none d-lg-flex" style=padding-left:11.75rem><li class=nav-item><a href=https://github.com/open-obfuscator/o-mvll target=_blank class=nav-link><i class="fa-brands fa-github opacity-70 fs-lg me-1"></i>
 &nbsp;Source Code</a></li><li class=nav-item><a href=https://github.com/open-obfuscator/o-mvll/releases/ target=_blank class=nav-link><i class="fa-solid fa-download opacity-70 fs-lg me-1"></i>
 &nbsp;Download</a></li></ul><button type=button class="navbar-toggler d-block d-lg-none ms-auto me-4" data-bs-toggle=offcanvas data-bs-target=#docsNav aria-controls=docsNav aria-label="Toggle navigation">
